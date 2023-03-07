@@ -20,9 +20,17 @@ let models = [
 ];
 
 var index = 0;
+
 var slaytCount = models.length;
 
-showSlide(index);
+var interval;
+
+var settings = {
+    duration: "2000",
+    random: false
+};
+
+init(settings);
 
 document.querySelector(".fa-circle-arrow-left").addEventListener("click", function () {
     index--;
@@ -37,6 +45,45 @@ document.querySelector(".fa-circle-arrow-right").addEventListener("click", funct
 
 });
 
+// for the slider to stop when mouse over the arrows
+document.querySelectorAll(".arrow").forEach(function(item){
+    item.addEventListener("mouseenter",function(){
+        clearInterval(interval);
+    })
+});
+
+// init function can continue to run when mouse leave the arrow
+document.querySelectorAll(".arrow").forEach(function(item){
+    item.addEventListener("mouseleave",function(){
+        init(settings);
+    })
+});
+
+function init(settings) {
+
+    var prev;
+    interval=setInterval(function () {
+
+        if (settings.random) {
+            do {
+                index = Math.floor(Math.random() * slaytCount);
+            } while (index == prev)
+            prev = index;
+        } else {
+            if (slaytCount == index + 1) {
+                index = -1;
+            }
+            showSlide(index);
+            index++;
+        }
+
+        showSlide(index);
+
+    }, settings.duration)
+
+};
+
+
 function showSlide(i) {
 
     index = i;
@@ -44,8 +91,8 @@ function showSlide(i) {
     if (i < 0) {
         index = slaytCount - 1;
     }
-    if(i>=slaytCount){
-        index=0;
+    if (i >= slaytCount) {
+        index = 0;
     }
 
 
