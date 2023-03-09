@@ -17,41 +17,59 @@ function success(input) {
     input.className = "form-control is-valid";
 };
 
-function checkEmail(input) 
-{
- const re= /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
- 
- if(re.test(input.value)){
-    success(input);
- }
- else{
-    error(input,"email address is not correct");
- }
+function checkEmail(input) {
+    const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
+
+    if (re.test(input.value)) {
+        success(input);
+    }
+    else {
+        error(input, "email address is not correct");
+    }
 };
 
-// function checkLength(input,min,max){
-//     if(input.value.length<min){
-//         error(input,`${input.i}`)
-//     }
-// }
+function checkLength(input, min, max) {
+    if (input.value.length < min) {
+        error(input, `${input.id} must be ${min} characters long`);
+    } else if (input.value.length > max) {
+        error(input, `${input.id} must be ${max} characters long`);
+
+    } else {
+        success(input);
+    }
+};
+
+function confirmPassword(input1,input2){
+    if(input1.value!==input2.value){
+        error(input2,"The passwords do not match.");
+    }
+};
 
 
-function chechRequired(inputs){
-    inputs.forEach(function(input){
-        if(input.value===""){
-            error(input,`${input.id} is required`);
-        
+function chechRequired(inputs) {
+    inputs.forEach(function (input) {
+        if (input.value === "") {
+            error(input, `${input.id} is required`);
         }
-        else{
+        else {
             success(input);
         }
     })
-}
+};
+
+
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    chechRequired([username,email,password,repassword]);
+
+    chechRequired([username, email, password, repassword]);
 
     checkEmail(email);
+
+    checkLength(username, 7, 15);
+
+    checkLength(password, 7, 12);
+
+    confirmPassword(password,repassword);
 });
 
