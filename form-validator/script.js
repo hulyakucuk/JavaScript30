@@ -39,6 +39,14 @@ function checkLength(input, min, max) {
     }
 };
 
+
+function checkPhone(input){
+    var exp =/^\d{10}$/;
+    if(!exp.test(input.value)){
+    error(input,"phone number must be 10 character long");
+}};
+
+
 function confirmPassword(input1,input2){
     if(input1.value!==input2.value){
         error(input2,"The passwords do not match.");
@@ -71,5 +79,7 @@ form.addEventListener("submit", function (e) {
     checkLength(password, 7, 12);
 
     confirmPassword(password,repassword);
+
+    checkPhone(phone);
 });
 
