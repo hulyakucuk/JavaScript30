@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #021b6e;
+    background-color: #152c76;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@ body{
 }
 
 .seat{
-    background-color: #42579b;
+    background-color: #8ae993;
     height: 18px;
     width: 18px;
     margin: 4px;
@@ -41,7 +41,7 @@ body{
     margin-right: 20px;
 }
 
-.seat:nth-of-type(3){
+.seat:nth-of-type(6){
     margin-right: 20px;
 }
 
@@ -71,7 +71,10 @@ body{
     justify-content: center;
     margin: 0 10px;
 }
+p.text{
+    margin-top: 8px;
+}
 p.text span{
-    margin: 5px;
+    padding: 0.3rem;
     color: rgb(255, 204, 0);
 }
