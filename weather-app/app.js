@@ -8,11 +8,14 @@ const setInput=(e)=>{
 }
 
 const getResult=(cityName)=>{
+   
     let query=`${url}weather?q=${cityName}&appid=${key}&units=metric&lang=tr`
    fetch(query)
    .then(res=>res.json())
    .then(dataResult)
+   console.log(query)
 }
+
 
 const dataResult=(data)=>{
     let city=document.querySelector(".city")
