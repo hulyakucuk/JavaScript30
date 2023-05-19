@@ -1,0 +1,20 @@
+{
+    "kullanicilar":[
+        {
+            "isim":"Mehmet",
+            "soyisim":"Kara",
+            "yas":22
+        },
+        {
+            "isim":"Murat",
+            "soyisim":"Kara",
+            "yas":32
+        },
+        {
+            "isim":"Ayşe",
+            "soyisim":"Kara",
+            "yas":12
+        }
+    ],
+    "yetki":["yönetici","kullanıcı"]
+}
